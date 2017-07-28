@@ -34,8 +34,6 @@ export class Console extends ibas.ModuleConsole {
         this.register(new SuggestionChooseServiceMapping());
         this.register(new SuggestionLinkServiceMapping());
         // 注册常驻应用
-        this.register(new SuggestionApp());
-
     }
     /** 运行 */
     run(): void {
@@ -55,7 +53,61 @@ export class Console extends ibas.ModuleConsole {
             // 使用c类型视图
             uiModules.push("../bsui/c/Navigation");
         }
-        let that: Console = this;
+        let that: this = this;
+        require(uiModules, function (ui: any): void {
+            // 设置导航
+            that._navigation = new ui.default();
+            // 调用初始化
+            that.initialize();
+        });
+        // 保留基类方法
+        super.run();
+    }
+}
+
+/** 模块控制台 */
+export class ConsoleUsers extends ibas.ModuleConsole {
+    /** 模块-标识 */
+    static CONSOLE_ID: string = "420471fe-047f-4c73-ae26-fe9da158b615";
+    /** 模块-名称 */
+    static CONSOLE_NAME: string = "FeedbackUsers";
+    /** 构造函数 */
+    constructor() {
+        super();
+        this.id = ConsoleUsers.CONSOLE_ID;
+        this.name = ConsoleUsers.CONSOLE_NAME;
+    }
+    private _navigation: ibas.IViewNavigation;
+    /** 创建视图导航 */
+    navigation(): ibas.IViewNavigation {
+        return this._navigation;
+    }
+    /** 初始化 */
+    protected registers(): void {
+        // 注册功能
+        // 注册服务应用
+        // 注册常驻应用
+        this.register(new SuggestionApp());
+
+    }
+    /** 运行 */
+    run(): void {
+        // 加载语言-框架默认
+        ibas.i18n.load(this.rootUrl + "resources/languages/bo/suggestion.json");
+        // 设置资源属性
+        this.description = ibas.i18n.prop(this.name.toLowerCase());
+        this.icon = ibas.i18n.prop(this.name.toLowerCase() + "_icon");
+        // 先加载ui导航
+        let uiModules: string[] = [];
+        if (!ibas.config.get(ibas.CONFIG_ITEM_DISABLE_PLATFORM_VIEW, false)
+            && this.plantform === ibas.emPlantform.PHONE) {
+            // 使用m类型视图
+            uiModules.push("../bsui/m/Navigation");
+        } else {
+            // 使用c类型视图
+            uiModules.push("../bsui/c/Navigation");
+        }
+        let that: this = this;
         require(uiModules, function (ui: any): void {
             // 设置导航
             that._navigation = new ui.default();
