@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Domain Name="Feedback" ShortName="FB">
+  <Model Name="Suggestion" Description="建议" ModelType="Simple" Mapped="${Company}_FB_SUGGESTION">
+    <Property Name="SystemId" Description="系统标识" DataType="Alphanumeric" DataSubType="Default" EditSize="36" Mapped="SystemId"/>
+    <Property Name="ModuleId" Description="模块标识" DataType="Alphanumeric" DataSubType="Default" EditSize="36" Mapped="ModuleId"/>
+    <Property Name="ApplicationId" Description="应用标识" DataType="Alphanumeric" DataSubType="Default" EditSize="36" Mapped="AppId"/>
+    <Property Name="Suggester" Description="建议人" DataType="Alphanumeric" DataSubType="Default" EditSize="100" Mapped="Suggester"/>
+    <Property Name="Subject" Description="主题" DataType="Alphanumeric" DataSubType="Default" EditSize="60" Mapped="Subject"/>
+    <Property Name="Tags" Description="标签" DataType="Alphanumeric" DataSubType="Default" EditSize="100" Mapped="Tags"/>
+    <Property Name="Content" Description="内容" DataType="Alphanumeric" DataSubType="Default" EditSize="300" Mapped="Content"/>
+    <Property Name="Screenshot" Description="截图" DataType="Alphanumeric" DataSubType="Default" EditSize="300" Mapped="Screenshot"/>
+    <Property Name="Closed" Description="是否关闭" DataType="Alphanumeric" DataSubType="Default" EditSize="1" DeclaredType="emYesNo" Mapped="Closed"/>
+    <Property Name="ObjectKey" Description="对象键值" DataType="Numeric" DataSubType="Default" EditSize="8" Mapped="ObjectKey" PrimaryKey="Yes"/>
+    <Property Name="ObjectCode" Description="对象类型" DataType="Alphanumeric" DataSubType="Default" EditSize="30" Mapped="ObjectCode"/>
+    <Property Name="DataSource" Description="数据源" DataType="Alphanumeric" DataSubType="Default" EditSize="8" Mapped="DataSource"/>
+    <Property Name="CreateDate" Description="创建日期" DataType="Date" DataSubType="Default" EditSize="8" Mapped="CreateDate"/>
+    <Property Name="CreateTime" Description="创建时间" DataType="Date" DataSubType="Time" EditSize="8" Mapped="CreateTime"/>
+    <Property Name="UpdateDate" Description="修改日期" DataType="Date" DataSubType="Default" EditSize="8" Mapped="UpdateDate"/>
+    <Property Name="UpdateTime" Description="修改时间" DataType="Date" DataSubType="Time" EditSize="8" Mapped="UpdateTime"/>
+    <Property Name="CreateActionId" Description="创建动作标识" DataType="Alphanumeric" DataSubType="Default" EditSize="36" Mapped="CreateActId"/>
+    <Property Name="UpdateActionId" Description="更新动作标识" DataType="Alphanumeric" DataSubType="Default" EditSize="36" Mapped="UpdateActId"/>
+    <Property Name="LogInst" Description="实例号（版本）" DataType="Numeric" DataSubType="Default" EditSize="8" Mapped="LogInst"/>
+    <Property Name="CreateUserSign" Description="创建用户" DataType="Numeric" DataSubType="Default" EditSize="8" Mapped="Creator"/>
+    <Property Name="UpdateUserSign" Description="修改用户" DataType="Numeric" DataSubType="Default" EditSize="8" Mapped="Updator"/>
+  </Model>
+  <BusinessObject MappedModel="Suggestion" ShortName="${Company}_FB_SUGGESTION"/>
+</Domain>

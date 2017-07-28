@@ -1,0 +1,10 @@
+{
+  "feedback": "应用反馈",
+  "feedback_icon":  "sap-icon://stethoscope",
+  "feedback_func_suggestion": "建议",
+  "feedback_app_suggestion_list": "建议列表",
+  "feedback_app_suggestion_choose": "建议选择",
+  "feedback_app_suggestion_view": "建议查看",
+  "feedback_app_suggestion_edit": "建议编辑",
+  "feedback_closing_delimiter": "----结束----"
+}

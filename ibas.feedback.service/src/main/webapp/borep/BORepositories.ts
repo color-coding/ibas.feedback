@@ -1,0 +1,39 @@
+/**
+ * @license
+ * Copyright color-coding studio. All Rights Reserved.
+ *
+ * Use of this source code is governed by an Apache License, Version 2.0
+ * that can be found in the LICENSE file at http://www.apache.org/licenses/LICENSE-2.0
+ */
+
+import * as ibas from "ibas/index";
+import * as bo from "./bo/index";
+import { IBORepositoryFeedback, BO_REPOSITORY_FEEDBACK } from "../api/index";
+import { DataConverter4fb } from "./DataConverters";
+
+/** 业务对象仓库 */
+export class BORepositoryFeedback extends ibas.BORepositoryApplication implements IBORepositoryFeedback {
+
+    /** 创建此模块的后端与前端数据的转换者 */
+    protected createConverter(): ibas.IDataConverter {
+        return new DataConverter4fb;
+    }
+
+    /**
+     * 查询 建议
+     * @param fetcher 查询者
+     */
+    fetchSuggestion(fetcher: ibas.FetchCaller<bo.Suggestion>): void {
+        super.fetch(bo.Suggestion.name, fetcher);
+    }
+    /**
+     * 保存 建议
+     * @param saver 保存者
+     */
+    saveSuggestion(saver: ibas.SaveCaller<bo.Suggestion>): void {
+        super.save(bo.Suggestion.name, saver);
+    }
+
+}
+// 注册业务对象仓库到工厂
+ibas.boFactory.register(BO_REPOSITORY_FEEDBACK, BORepositoryFeedback);

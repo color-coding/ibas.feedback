@@ -1,0 +1,9 @@
+[
+  {
+    "Id": "420471fe-047f-4c73-ae26-fe9da158b614",
+    "Name": "Feedback",
+    "Category": "",
+    "Address": ".../",
+    "Repository": "http://localhost:8080/feedback/services/rest/data"
+  }
+]
