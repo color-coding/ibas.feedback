@@ -29,7 +29,10 @@ export class Console extends ibas.ModuleConsole {
     /** 初始化 */
     protected registers(): void {
         // 注册功能
+        this.register(new SuggestionFunc());
         // 注册服务应用
+        this.register(new SuggestionChooseServiceMapping());
+        this.register(new SuggestionLinkServiceMapping());
         // 注册常驻应用
         this.register(new SuggestionApp());
 
