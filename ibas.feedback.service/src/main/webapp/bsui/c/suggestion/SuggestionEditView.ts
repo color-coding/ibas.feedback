@@ -24,6 +24,7 @@ export class SuggestionEditView extends ibas.BOEditView implements ISuggestionEd
     darw(): any {
         let that: this = this;
         this.form = new sap.ui.layout.form.SimpleForm("", {
+            editable: true,
             content: [
             ]
         });
