@@ -14,15 +14,14 @@ import org.colorcoding.ibas.bobas.mapping.BOCode;
 import org.colorcoding.ibas.bobas.mapping.DbField;
 import org.colorcoding.ibas.bobas.mapping.DbFieldType;
 import org.colorcoding.ibas.feedback.MyConfiguration;
-import org.colorcoding.ibas.feedback.MyConsts;
 
 /**
  * 获取-建议
  * 
  */
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(name = Suggestion.BUSINESS_OBJECT_NAME, namespace = MyConsts.NAMESPACE_BO)
-@XmlRootElement(name = Suggestion.BUSINESS_OBJECT_NAME, namespace = MyConsts.NAMESPACE_BO)
+@XmlType(name = Suggestion.BUSINESS_OBJECT_NAME, namespace = MyConfiguration.NAMESPACE_BO)
+@XmlRootElement(name = Suggestion.BUSINESS_OBJECT_NAME, namespace = MyConfiguration.NAMESPACE_BO)
 @BOCode(Suggestion.BUSINESS_OBJECT_CODE)
 public class Suggestion extends BusinessObject<Suggestion> implements ISuggestion {
 
