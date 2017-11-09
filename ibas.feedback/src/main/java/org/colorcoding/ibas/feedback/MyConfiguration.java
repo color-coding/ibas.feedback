@@ -30,4 +30,8 @@ public class MyConfiguration extends org.colorcoding.ibas.bobas.MyConfiguration 
 	 */
 	public static final String NAMESPACE_SERVICE = NAMESPACE_ROOT + "service";
 
+	/**
+	 * 配置项目-报表文件文件夹
+	 */
+	public static final String CONFIG_ITEM_FEEDBACK_FILE_FOLDER = "FeedbackFileFolder";
 }
