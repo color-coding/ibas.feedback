@@ -16,11 +16,23 @@ import org.colorcoding.ibas.bobas.data.FileData;
 import org.colorcoding.ibas.bobas.i18n.I18N;
 import org.colorcoding.ibas.bobas.message.Logger;
 import org.colorcoding.ibas.bobas.repository.jersey.FileRepositoryService;
+import org.colorcoding.ibas.feedback.MyConfiguration;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 
 @Path("file")
 public class FileService extends FileRepositoryService {
+    /**
+     * 工作目录
+     */
+    public final static String WORK_FOLDER = MyConfiguration.getConfigValue(
+            MyConfiguration.CONFIG_ITEM_FEEDBACK_FILE_FOLDER,
+            MyConfiguration.getDataFolder() + File.separator + "feedback_files");
+
+    public FileService() {
+        // 设置工作目录，资源目录下的报表目录
+        this.getRepository().setRepositoryFolder(FileService.WORK_FOLDER);
+    }
 
     @POST
     @Path("upload")

@@ -45,7 +45,7 @@ export class SuggestionViewApp extends ibas.BOViewService<ISuggestionViewView> {
             let that: this = this;
             let criteria: ibas.ICriteria = new ibas.Criteria();
             let condition: ibas.ICondition = criteria.conditions.create();
-            condition.alias = "FileName";
+            condition.alias = ibas.CRITERIA_CONDITION_ALIAS_FILE_NAME;
             condition.value = this.viewData.screenshot;
             let boRepository: BORepositoryFeedback = new BORepositoryFeedback();
             boRepository.downloadScreenshot({
