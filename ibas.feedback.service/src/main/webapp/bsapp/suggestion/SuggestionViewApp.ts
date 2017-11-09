@@ -37,6 +37,40 @@ export class SuggestionViewApp extends ibas.BOViewService<ISuggestionViewView> {
     /** 视图显示后 */
     protected viewShowed(): void {
         // 视图加载完成
+        if (ibas.objects.isNull(this.viewData)) {
+            return;
+        }
+        this.view.showSuggestion(this.viewData);
+        if (!ibas.objects.isNull(this.viewData.screenshot)) {
+            let that: this = this;
+            let criteria: ibas.ICriteria = new ibas.Criteria();
+            let condition: ibas.ICondition = criteria.conditions.create();
+            condition.alias = "FileName";
+            condition.value = this.viewData.screenshot;
+            let boRepository: BORepositoryFeedback = new BORepositoryFeedback();
+            boRepository.downloadScreenshot({
+                criteria: criteria,
+                onCompleted(opRslt: ibas.IOperationResult<any>): void {
+                    try {
+                        if (opRslt.resultCode !== 0) {
+                            throw new Error(opRslt.message);
+                        }
+                        let blob: Blob = opRslt.resultObjects.firstOrDefault();
+                        if (!ibas.objects.isNull(blob)) {
+                            let fileReader: FileReader = new FileReader();
+                            fileReader.onload = function (e: ProgressEvent): void {
+                                let dataUrl: string = (<any>e.target).result;
+                                that.view.showScreenshot(dataUrl);
+                            };
+                            fileReader.readAsDataURL(blob);
+                        }
+
+                    } catch (error) {
+                        that.messages(error);
+                    }
+                }
+            });
+        }
     }
     /** 编辑数据，参数：目标数据 */
     protected editData(): void {
@@ -89,6 +123,10 @@ export class SuggestionViewApp extends ibas.BOViewService<ISuggestionViewView> {
 /** 视图-建议 */
 export interface ISuggestionViewView extends ibas.IBOViewView {
 
+    /** 显示数据 */
+    showSuggestion(data: bo.Suggestion): void;
+    /** 展示屏幕截图 */
+    showScreenshot(dataUrl: string): void;
 }
 /** 建议连接服务映射 */
 export class SuggestionLinkServiceMapping extends ibas.BOLinkServiceMapping {

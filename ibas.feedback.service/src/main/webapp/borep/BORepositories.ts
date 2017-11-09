@@ -34,6 +34,30 @@ export class BORepositoryFeedback extends ibas.BORepositoryApplication implement
         super.save(bo.Suggestion.name, saver);
     }
 
+    /**
+     * 上传屏幕截图
+     * @param caller 调用者
+     */
+    uploadScreenshot(caller: ibas.UploadFileCaller): void {
+        if (!this.address.endsWith("/")) { this.address += "/"; }
+        let fileRepository: ibas.FileRepositoryUploadAjax = new ibas.FileRepositoryUploadAjax();
+        fileRepository.address = this.address.replace("/services/rest/data/", "/services/rest/file/");
+        fileRepository.token = this.token;
+        fileRepository.converter = this.createConverter();
+        fileRepository.upload("upload", caller);
+    }
+    /**
+     * 下载屏幕截图
+     * @param caller 调用者
+     */
+    downloadScreenshot(caller: ibas.DownloadFileCaller): void {
+        if (!this.address.endsWith("/")) { this.address += "/"; }
+        let fileRepository: ibas.FileRepositoryDownloadAjax = new ibas.FileRepositoryDownloadAjax();
+        fileRepository.address = this.address.replace("/services/rest/data/", "/services/rest/file/");
+        fileRepository.token = this.token;
+        fileRepository.converter = this.createConverter();
+        fileRepository.download("download", caller);
+    }
 }
 // 注册业务对象仓库到工厂
 ibas.boFactory.register(BO_REPOSITORY_FEEDBACK, BORepositoryFeedback);

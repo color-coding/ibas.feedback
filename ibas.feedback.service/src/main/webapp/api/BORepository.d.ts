@@ -8,7 +8,9 @@
 
 import {
     FetchCaller,
-    SaveCaller
+    SaveCaller,
+    UploadFileCaller,
+    DownloadFileCaller
 } from "ibas/index";
 import * as bo from "./bo/index"
 
@@ -25,6 +27,16 @@ export interface IBORepositoryFeedback {
      * @param saver 保存者
      */
     saveSuggestion(saver: SaveCaller<bo.ISuggestion>);
+    /**
+     * 上传屏幕截图
+     * @param caller 调用者
+     */
+    uploadScreenshot(caller: UploadFileCaller);
+    /**
+     * 下载屏幕截图
+     * @param caller 调用者
+     */
+    downloadScreenshot(caller: DownloadFileCaller);
 
 
 }
