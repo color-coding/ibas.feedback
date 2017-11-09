@@ -19,8 +19,87 @@ export class SuggestionViewView extends ibas.BOViewView implements ISuggestionVi
     /** 绘制视图 */
     darw(): any {
         let that: this = this;
+        this.image = new sap.m.Image("", {
+
+        });
         this.form = new sap.ui.layout.form.SimpleForm("", {
+            editable: false,
             content: [
+                new sap.ui.core.Title("", { text: ibas.i18n.prop("feedback_suggestion_information") }),
+                new sap.m.Label("", { text: ibas.i18n.prop("bo_suggestion_suggester") }),
+                new sap.m.Input("", {
+                    editable: false,
+                }).bindProperty("value", {
+                    path: "/suggester"
+                }),
+                new sap.m.Label("", { text: ibas.i18n.prop("bo_suggestion_subject") }),
+                new sap.m.Input("", {
+                    editable: false,
+                }).bindProperty("value", {
+                    path: "/subject"
+                }),
+                new sap.m.Label("", { text: ibas.i18n.prop("bo_suggestion_tags") }),
+                new sap.m.Tokenizer("", {
+                }).bindProperty("editable", {
+                    path: "/tags",
+                    formatter: function (value: string): boolean {
+                        if (ibas.objects.isNull(value)) {
+                            return false;
+                        }
+                        let tokens: Array<sap.m.Token> = [];
+                        for (let item of value.split(/\s+/)) {
+                            if (item === "") { continue; }
+                            tokens.push(new sap.m.Token("", {
+                                key: item,
+                                text: item
+                            }));
+                        }
+                        this.setTokens(tokens);
+                        return false;
+                    },
+                }),
+                new sap.m.Label("", { text: ibas.i18n.prop("bo_suggestion_content") }),
+                new sap.m.TextArea("", {
+                    editable: false,
+                    rows: 3
+                }).bindProperty("value", {
+                    path: "/content"
+                }),
+                new sap.ui.core.Title("", { text: ibas.i18n.prop("feedback_application_information") }),
+                new sap.m.Label("", { text: ibas.i18n.prop("bo_suggestion_objectkey") }),
+                new sap.m.Input("", {
+                    editable: false,
+                }).bindProperty("value", {
+                    path: "/objectKey"
+                }),
+                new sap.m.Label("", { text: ibas.i18n.prop("bo_suggestion_systemid") }),
+                new sap.m.Input("", {
+                    editable: false,
+                }).bindProperty("selectedKey", {
+                    path: "/systemId"
+                }),
+                new sap.m.Label("", { text: ibas.i18n.prop("bo_suggestion_moduleid") }),
+                new sap.m.Input("", {
+                    editable: false,
+                }).bindProperty("value", {
+                    path: "/moduleId"
+                }),
+                new sap.m.Label("", { text: ibas.i18n.prop("bo_suggestion_applicationid") }),
+                new sap.m.Input("", {
+                    editable: false,
+                }).bindProperty("value", {
+                    path: "/applicationId"
+                }),
+                new sap.m.Label("", { text: ibas.i18n.prop("bo_suggestion_closed") }),
+                new sap.m.Select("", {
+                    enabled: false,
+                    items: utils.createComboBoxItems(ibas.emYesNo)
+                }).bindProperty("selectedKey", {
+                    path: "/closed",
+                    type: "sap.ui.model.type.Integer"
+                }),
+                new sap.ui.core.Title("", { text: ibas.i18n.prop("bo_suggestion_screenshot") }),
+                this.image
             ]
         });
         this.page = new sap.m.Page("", {
@@ -76,9 +155,13 @@ export class SuggestionViewView extends ibas.BOViewView implements ISuggestionVi
     }
     private page: sap.m.Page;
     private form: sap.ui.layout.form.SimpleForm;
-
+    private image: sap.m.Image;
     /** 显示数据 */
     showSuggestion(data: bo.Suggestion): void {
         this.form.setModel(new sap.ui.model.json.JSONModel(data));
+    }
+    /** 展示屏幕截图 */
+    showScreenshot(dataUrl: string): void {
+        this.image.setSrc(dataUrl);
     }
 }

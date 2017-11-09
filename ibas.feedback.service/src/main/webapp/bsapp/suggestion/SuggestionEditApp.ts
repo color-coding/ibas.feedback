@@ -43,6 +43,36 @@ export class SuggestionEditApp extends ibas.BOEditApplication<ISuggestionEditVie
             this.proceeding(ibas.emMessageType.WARNING, ibas.i18n.prop("sys_shell_data_created_new"));
         }
         this.view.showSuggestion(this.editData);
+        if (!ibas.objects.isNull(this.editData.screenshot)) {
+            let that: this = this;
+            let criteria: ibas.ICriteria = new ibas.Criteria();
+            let condition: ibas.ICondition = criteria.conditions.create();
+            condition.alias = "FileName";
+            condition.value = this.editData.screenshot;
+            let boRepository: BORepositoryFeedback = new BORepositoryFeedback();
+            boRepository.downloadScreenshot({
+                criteria: criteria,
+                onCompleted(opRslt: ibas.IOperationResult<any>): void {
+                    try {
+                        if (opRslt.resultCode !== 0) {
+                            throw new Error(opRslt.message);
+                        }
+                        let blob: Blob = opRslt.resultObjects.firstOrDefault();
+                        if (!ibas.objects.isNull(blob)) {
+                            let fileReader: FileReader = new FileReader();
+                            fileReader.onload = function (e: ProgressEvent): void {
+                                let dataUrl: string = (<any>e.target).result;
+                                that.view.showScreenshot(dataUrl);
+                            };
+                            fileReader.readAsDataURL(blob);
+                        }
+
+                    } catch (error) {
+                        that.messages(error);
+                    }
+                }
+            });
+        }
     }
     /** 运行,覆盖原方法 */
     run(...args: any[]): void {
@@ -174,4 +204,6 @@ export interface ISuggestionEditView extends ibas.IBOEditView {
     deleteDataEvent: Function;
     /** 新建数据事件，参数1：是否克隆 */
     createDataEvent: Function;
+    /** 展示屏幕截图 */
+    showScreenshot(dataUrl: string): void;
 }

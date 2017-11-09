@@ -23,9 +23,103 @@ export class SuggestionEditView extends ibas.BOEditView implements ISuggestionEd
     /** 绘制视图 */
     darw(): any {
         let that: this = this;
+        this.image = new sap.m.Image("", {
+
+        });
         this.form = new sap.ui.layout.form.SimpleForm("", {
             editable: true,
             content: [
+                new sap.ui.core.Title("", { text: ibas.i18n.prop("feedback_suggestion_information") }),
+                new sap.m.Label("", { text: ibas.i18n.prop("bo_suggestion_suggester") }),
+                new sap.m.Input("", {
+                }).bindProperty("value", {
+                    path: "/suggester"
+                }),
+                new sap.m.Label("", { text: ibas.i18n.prop("bo_suggestion_subject") }),
+                new sap.m.Input("", {
+                }).bindProperty("value", {
+                    path: "/subject"
+                }),
+                new sap.m.Label("", { text: ibas.i18n.prop("bo_suggestion_tags") }),
+                new sap.m.MultiInput("", {
+                    enableMultiLineMode: true,
+                    showValueHelp: false,
+                    placeholder: ibas.i18n.prop("feedback_placeholder_suggestion_tags"),
+                    change: function (oEvent: sap.ui.base.Event): void {
+                        let value: string = oEvent.getParameter("value");
+                        let tokens: Array<sap.m.Token> = [];
+                        for (let item of value.split(/\s+/)) {
+                            if (item === "") { continue; }
+                            tokens.push(new sap.m.Token("", {
+                                key: item,
+                                text: item
+                            }));
+                        }
+                        this.setTokens(tokens);
+                    },
+                    tokenUpdate: function (oEvent: sap.ui.base.Event): void {
+                        if (oEvent.getParameter("type") === "removed") {
+                            let value: string = "";
+                            for (let token of this.getTokens()) {
+                                value = value.concat(token.getKey(), " ");
+                            }
+                            this.setValue(value.trim());
+                        }
+                    },
+                    modelContextChange: function (oEvent: sap.ui.base.Event): void {
+                        let value: string = this.getValue();
+                        if (ibas.objects.isNull(value)) {
+                            return;
+                        }
+                        let tokens: Array<sap.m.Token> = [];
+                        for (let item of value.split(/\s+/)) {
+                            if (item === "") { continue; }
+                            tokens.push(new sap.m.Token("", {
+                                key: item,
+                                text: item
+                            }));
+                        }
+                        this.setTokens(tokens);
+                    },
+                }).bindProperty("value", {
+                    path: "/tags"
+                }),
+                new sap.m.Label("", { text: ibas.i18n.prop("bo_suggestion_content") }),
+                new sap.m.TextArea("", {
+                    rows: 3
+                }).bindProperty("value", {
+                    path: "/content"
+                }),
+                new sap.ui.core.Title("", { text: ibas.i18n.prop("feedback_application_information") }),
+                new sap.m.Label("", { text: ibas.i18n.prop("bo_suggestion_objectkey") }),
+                new sap.m.Input("", {
+                }).bindProperty("value", {
+                    path: "/objectKey"
+                }),
+                new sap.m.Label("", { text: ibas.i18n.prop("bo_suggestion_systemid") }),
+                new sap.m.Input("", {
+                }).bindProperty("selectedKey", {
+                    path: "/systemId"
+                }),
+                new sap.m.Label("", { text: ibas.i18n.prop("bo_suggestion_moduleid") }),
+                new sap.m.Input("", {
+                }).bindProperty("value", {
+                    path: "/moduleId"
+                }),
+                new sap.m.Label("", { text: ibas.i18n.prop("bo_suggestion_applicationid") }),
+                new sap.m.Input("", {
+                }).bindProperty("value", {
+                    path: "/applicationId"
+                }),
+                new sap.m.Label("", { text: ibas.i18n.prop("bo_suggestion_closed") }),
+                new sap.m.Select("", {
+                    items: utils.createComboBoxItems(ibas.emYesNo)
+                }).bindProperty("selectedKey", {
+                    path: "/closed",
+                    type: "sap.ui.model.type.Integer"
+                }),
+                new sap.ui.core.Title("", { text: ibas.i18n.prop("bo_suggestion_screenshot") }),
+                this.image
             ]
         });
         this.page = new sap.m.Page("", {
@@ -92,6 +186,7 @@ export class SuggestionEditView extends ibas.BOEditView implements ISuggestionEd
     }
     private page: sap.m.Page;
     private form: sap.ui.layout.form.SimpleForm;
+    private image: sap.m.Image;
     /** 改变视图状态 */
     private changeViewStatus(data: bo.Suggestion): void {
         if (ibas.objects.isNull(data)) {
@@ -113,5 +208,9 @@ export class SuggestionEditView extends ibas.BOEditView implements ISuggestionEd
         utils.refreshModelChanged(this.form, data);
         // 改变视图状态
         this.changeViewStatus(data);
+    }
+    /** 展示屏幕截图 */
+    showScreenshot(dataUrl: string): void {
+        this.image.setSrc(dataUrl);
     }
 }
