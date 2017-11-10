@@ -7,7 +7,7 @@
  */
 
 import * as ibas from "ibas/index";
-import { utils } from "openui5/typings/ibas.utils";
+import * as openui5 from "openui5/index";
 import * as bo from "../../../borep/bo/index";
 import { ISuggestionEditView } from "../../../bsapp/suggestion/index";
 
@@ -113,7 +113,7 @@ export class SuggestionEditView extends ibas.BOEditView implements ISuggestionEd
                 }),
                 new sap.m.Label("", { text: ibas.i18n.prop("bo_suggestion_closed") }),
                 new sap.m.Select("", {
-                    items: utils.createComboBoxItems(ibas.emYesNo)
+                    items: openui5.utils.createComboBoxItems(ibas.emYesNo)
                 }).bindProperty("selectedKey", {
                     path: "/closed",
                     type: "sap.ui.model.type.Integer"
@@ -195,7 +195,7 @@ export class SuggestionEditView extends ibas.BOEditView implements ISuggestionEd
         // 新建时：禁用删除，
         if (data.isNew) {
             if (this.page.getSubHeader() instanceof sap.m.Toolbar) {
-                utils.changeToolbarDeletable(<sap.m.Toolbar>this.page.getSubHeader(), false);
+                openui5.utils.changeToolbarDeletable(<sap.m.Toolbar>this.page.getSubHeader(), false);
             }
         }
         // 不可编辑：已批准，
@@ -205,7 +205,7 @@ export class SuggestionEditView extends ibas.BOEditView implements ISuggestionEd
     showSuggestion(data: bo.Suggestion): void {
         this.form.setModel(new sap.ui.model.json.JSONModel(data));
         // 监听属性改变，并更新控件
-        utils.refreshModelChanged(this.form, data);
+        openui5.utils.refreshModelChanged(this.form, data);
         // 改变视图状态
         this.changeViewStatus(data);
     }

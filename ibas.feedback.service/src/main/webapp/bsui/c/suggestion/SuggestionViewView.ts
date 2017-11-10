@@ -7,7 +7,7 @@
  */
 
 import * as ibas from "ibas/index";
-import { utils } from "openui5/typings/ibas.utils";
+import * as openui5 from "openui5/index";
 import * as bo from "../../../borep/bo/index";
 import { ISuggestionViewView } from "../../../bsapp/suggestion/index";
 
@@ -93,7 +93,7 @@ export class SuggestionViewView extends ibas.BOViewView implements ISuggestionVi
                 new sap.m.Label("", { text: ibas.i18n.prop("bo_suggestion_closed") }),
                 new sap.m.Select("", {
                     enabled: false,
-                    items: utils.createComboBoxItems(ibas.emYesNo)
+                    items: openui5.utils.createComboBoxItems(ibas.emYesNo)
                 }).bindProperty("selectedKey", {
                     path: "/closed",
                     type: "sap.ui.model.type.Integer"
