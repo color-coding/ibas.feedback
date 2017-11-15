@@ -10,7 +10,8 @@ import {
     FetchCaller,
     SaveCaller,
     UploadFileCaller,
-    DownloadFileCaller
+    DownloadFileCaller,
+    FileData
 } from "ibas/index";
 import * as bo from "./bo/index"
 
@@ -31,12 +32,12 @@ export interface IBORepositoryFeedback {
      * 上传屏幕截图
      * @param caller 调用者
      */
-    uploadScreenshot(caller: UploadFileCaller);
+    uploadScreenshot(caller: UploadFileCaller<FileData>);
     /**
      * 下载屏幕截图
      * @param caller 调用者
      */
-    downloadScreenshot(caller: DownloadFileCaller);
+    downloadScreenshot(caller: DownloadFileCaller<Blob>);
 
 
 }

@@ -50,7 +50,7 @@ export class SuggestionViewApp extends ibas.BOViewService<ISuggestionViewView> {
             let boRepository: BORepositoryFeedback = new BORepositoryFeedback();
             boRepository.downloadScreenshot({
                 criteria: criteria,
-                onCompleted(opRslt: ibas.IOperationResult<any>): void {
+                onCompleted(opRslt: ibas.IOperationResult<Blob>): void {
                     try {
                         if (opRslt.resultCode !== 0) {
                             throw new Error(opRslt.message);

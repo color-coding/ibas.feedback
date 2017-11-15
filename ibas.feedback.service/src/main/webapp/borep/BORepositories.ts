@@ -38,7 +38,7 @@ export class BORepositoryFeedback extends ibas.BORepositoryApplication implement
      * 上传屏幕截图
      * @param caller 调用者
      */
-    uploadScreenshot(caller: ibas.UploadFileCaller): void {
+    uploadScreenshot(caller: ibas.UploadFileCaller<ibas.FileData>): void {
         if (!this.address.endsWith("/")) { this.address += "/"; }
         let fileRepository: ibas.FileRepositoryUploadAjax = new ibas.FileRepositoryUploadAjax();
         fileRepository.address = this.address.replace("/services/rest/data/", "/services/rest/file/");
@@ -50,7 +50,7 @@ export class BORepositoryFeedback extends ibas.BORepositoryApplication implement
      * 下载屏幕截图
      * @param caller 调用者
      */
-    downloadScreenshot(caller: ibas.DownloadFileCaller): void {
+    downloadScreenshot(caller: ibas.DownloadFileCaller<Blob>): void {
         if (!this.address.endsWith("/")) { this.address += "/"; }
         let fileRepository: ibas.FileRepositoryDownloadAjax = new ibas.FileRepositoryDownloadAjax();
         fileRepository.address = this.address.replace("/services/rest/data/", "/services/rest/file/");
