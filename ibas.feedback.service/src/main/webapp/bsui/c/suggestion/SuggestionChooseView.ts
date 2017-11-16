@@ -102,7 +102,7 @@ export class SuggestionChooseView extends ibas.BOChooseView implements ISuggesti
                 for (let item of datas) {
                     hDatas.rows.push(item);
                 }
-                model.refresh(false);
+                model.refresh(false);                done = true;
 
             }
         }
