@@ -33,5 +33,5 @@ public class MyConfiguration extends org.colorcoding.ibas.bobas.MyConfiguration 
 	/**
 	 * 配置项目-反馈文件文件夹
 	 */
-	public static final String CONFIG_ITEM_FEEDBACK_FILE_FOLDER = "FeedbackFileFolder";
+	public static final String CONFIG_ITEM_FEEDBACK_FILE_FOLDER = "FBFileFolder";
 }
