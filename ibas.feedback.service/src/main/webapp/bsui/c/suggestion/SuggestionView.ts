@@ -60,7 +60,7 @@ export class SuggestionView extends ibas.BOResidentView implements ISuggestionVi
                 }),
                 new sap.m.FeedInput("", {
                     maxLength: 0,
-                    placeholder: ibas.i18n.prop("sys_shell_submit_suggestion"),
+                    placeholder: ibas.i18n.prop("shell_submit_suggestion"),
                     icon: "",// 当前用户的头像
                     showIcon: true,
                     iconDensityAware: true,

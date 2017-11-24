@@ -67,7 +67,7 @@ export class SuggestionApp extends ibas.ResidentApplication<ISuggestionView> {
                 }
             }
         });
-        this.proceeding(ibas.emMessageType.INFORMATION, ibas.i18n.prop("sys_shell_uploading_file"));
+        this.proceeding(ibas.emMessageType.INFORMATION, ibas.i18n.prop("shell_uploading_file"));
     }
     /** 保存数据 */
     protected saveData(): void {
@@ -83,7 +83,7 @@ export class SuggestionApp extends ibas.ResidentApplication<ISuggestionView> {
                     }
                     if (opRslt.resultObjects.length >= 0) {
                         that.messages(ibas.emMessageType.SUCCESS,
-                            ibas.i18n.prop("sys_shell_data_save") + ibas.i18n.prop("sys_shell_sucessful"));
+                            ibas.i18n.prop("shell_data_save") + ibas.i18n.prop("shell_sucessful"));
                     }
                     that.close();
                 } catch (error) {
@@ -92,7 +92,7 @@ export class SuggestionApp extends ibas.ResidentApplication<ISuggestionView> {
             }
         });
         this.busy(true);
-        this.proceeding(ibas.emMessageType.INFORMATION, ibas.i18n.prop("sys_shell_saving_data"));
+        this.proceeding(ibas.emMessageType.INFORMATION, ibas.i18n.prop("shell_saving_data"));
     }
 }
 /** 视图-建议 */
