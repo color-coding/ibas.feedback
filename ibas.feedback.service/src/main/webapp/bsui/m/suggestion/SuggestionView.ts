@@ -7,9 +7,6 @@
  */
 
 import * as ibas from "ibas/index";
-import * as openui5 from "openui5/index";
-import * as bo from "../../../borep/bo/index";
-import { ISuggestionView } from "../../../bsapp/suggestion/index";
 import { SuggestionView as cSuggestionView } from "../../c/suggestion/index";
 /**
  * 视图-建议
