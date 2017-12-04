@@ -11,3 +11,4 @@ export * from "./SuggestionListView";
 export * from "./SuggestionChooseView";
 export * from "./SuggestionViewView";
 export * from "./SuggestionEditView";
+export * from "./SuggestionView";

@@ -96,6 +96,7 @@ export class ConsoleUsers extends ibas.ModuleConsole {
     /** 运行 */
     run(): void {
         // 加载语言-框架默认
+        ibas.i18n.load(this.rootUrl + "resources/languages/feedback.json");
         ibas.i18n.load(this.rootUrl + "resources/languages/bo/suggestion.json");
         ibas.i18n.load(this.rootUrl + "resources/languages/enums.json");
         // 设置资源属性
