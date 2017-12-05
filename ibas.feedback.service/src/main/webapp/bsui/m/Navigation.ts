@@ -7,7 +7,8 @@
  */
 
 import * as ibas from "ibas/index";
-
+import * as suggestionApps from "../../bsapp/suggestion/index";
+import * as suggestionViews from "./suggestion/index";
 /**
  * 视图导航
  */
@@ -20,6 +21,9 @@ export default class Navigation extends ibas.ViewNavigation {
     protected newView(id: string): ibas.IView {
         let view: ibas.IView = null;
         switch (id) {
+            case suggestionApps.SuggestionApp.APPLICATION_ID:
+                view = new suggestionViews.SuggestionView();
+                break;
             default:
                 break;
         }
