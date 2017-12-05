@@ -33,17 +33,14 @@ export class SuggestionView extends ibas.BOResidentView implements ISuggestionVi
     }
     private bar: sap.m.Button;
     private document: Document;
-    private image: sap.m.Image;
     private layout: sap.ui.layout.VerticalLayout;
+    private form: sap.m.ResponsivePopover;
     /** 激活完整视图事件 */
     showFullViewEvent: Function;
     /** 绘制视图 */
     darw(): any {
         let that: this = this;
         this.document = <any>window.document.cloneNode(true);
-        this.image = new sap.m.Image("", {
-            width: ibas.strings.format("{0}px", window.innerWidth * 0.5)
-        });
         this.layout = new sap.ui.layout.VerticalLayout("", {
             content: [
                 // this.image,
@@ -51,12 +48,10 @@ export class SuggestionView extends ibas.BOResidentView implements ISuggestionVi
                     content: ibas.strings.format(" \
                         <div class='screenshotDiv' > \
                             <canvas class='screenshotCanvas' width='{2}' height='{3}' \
-                            style='width: {0}px;height: {1}px;visibility: hidden;'> \
+                            style='width: {0};height: {1};visibility: hidden;'> \
                             </canvas> \
-                        </div>", window.innerWidth * 0.5, window.innerHeight * 0.5, window.innerWidth, window.innerHeight)
-                }),
-                new sap.ui.core.HTML("", {
-                    content: "<div class='tools-fixed tools-draggable' ></div>"
+                        </div>", this.screenShotLayout.width, this.screenShotLayout.height,
+                        window.innerWidth, window.innerHeight)
                 }),
                 new sap.m.FeedInput("", {
                     maxLength: 0,
@@ -75,9 +70,34 @@ export class SuggestionView extends ibas.BOResidentView implements ISuggestionVi
                         });
                     }
                 }),
-            ]
+            ],
         });
-        return this.layout;
+        if (this.isDesktop) {
+            this.layout.insertContent(
+                new sap.ui.core.HTML("", {
+                    content: "<div class='tools-fixed tools-draggable' ></div>"
+                }), 1);
+        }
+        this.form = new sap.m.ResponsivePopover("", {
+            title: ibas.i18n.prop("feedback_app_suggestion_tucao"),
+            showCloseButton: true,
+            placement: sap.m.PlacementType.Bottom,
+            content: [
+                this.layout
+            ],
+        });
+        return this.form;
+    }
+    /** 屏幕截图布局 */
+    protected get screenShotLayout(): { width: string, height: string } {
+        return {
+            width: ibas.strings.format("{0}px", window.innerWidth * 0.5),
+            height: ibas.strings.format("{0}px", window.innerHeight * 0.5)
+        };
+    }
+    /** 是否桌面端 */
+    protected get isDesktop(): boolean {
+        return true;
     }
     /** 显示屏幕截图 */
     showScreenShot(): void {
@@ -109,10 +129,8 @@ export class SuggestionView extends ibas.BOResidentView implements ISuggestionVi
         require(
             [
                 "../../../3rdparty/rasterizeHTML.allinone",
-                "../../../3rdparty/canvastools.min",
-                "css!../../../3rdparty/canvastools.min"
             ],
-            function (rasterizeHTML: any, CanvasTools: any): void {
+            function (rasterizeHTML: any): void {
                 // 移除document中的script,否则会引发沙盒环境下script不允许执行的问题
                 let length: number = that.document.head.childNodes.length;
                 for (let i: number = length - 1; i >= 0; i--) {
@@ -137,10 +155,20 @@ export class SuggestionView extends ibas.BOResidentView implements ISuggestionVi
                     // 关闭loading动画
                     spinner.spin();
                     canvas.style.visibility = "visible";
-                    let canvasTools: any = new CanvasTools(canvas, { container: tools });
+                    if (that.isDesktop) {
+                        // 仅桌面端可编辑截图
+                        require(
+                            [
+                                "../../../3rdparty/canvastools.min",
+                                "css!../../../3rdparty/canvastools.min"
+                            ], function (CanvasTools: any): void {
+                                let canvasTools: any = new CanvasTools(canvas, { container: tools });
+                            });
+                    }
                 }, function error(e: any): void {
                     // empty
                 });
             });
+
     }
 }
