@@ -7,7 +7,7 @@
  */
 
 import * as ibas from "ibas/index";
-import { CONSOLE_ID, CONSOLE_NAME, CONSOLE_VERSION } from "../api/index";
+import { CONSOLE_ID, CONSOLE_NAME, CONSOLE_VERSION, CONSOLEUSERS_ID, CONSOLEUSERS_NAME, CONSOLEUSERS_VERSION } from "../api/index";
 import { SuggestionFunc, SuggestionChooseServiceMapping, SuggestionLinkServiceMapping, SuggestionApp } from "./suggestion/index";
 
 /** 模块控制台 */
@@ -67,18 +67,12 @@ export class Console extends ibas.ModuleConsole {
 
 /** 模块控制台 */
 export class ConsoleUsers extends ibas.ModuleConsole {
-    /** 模块-标识 */
-    static CONSOLE_ID: string = "420471fe-047f-4c73-ae26-fe9da158b615";
-    /** 模块-名称 */
-    static CONSOLE_NAME: string = "FeedbackUsers";
-    /** 模块-版本 */
-    static CONSOLE_VERSION: string = "0.1.0";
     /** 构造函数 */
     constructor() {
         super();
-        this.id = ConsoleUsers.CONSOLE_ID;
-        this.name = ConsoleUsers.CONSOLE_NAME;
-        this.version = ConsoleUsers.CONSOLE_VERSION;
+        this.id = CONSOLEUSERS_ID;
+        this.name = CONSOLEUSERS_NAME;
+        this.version = CONSOLEUSERS_VERSION;
     }
     private _navigation: ibas.IViewNavigation;
     /** 创建视图导航 */
@@ -96,6 +90,7 @@ export class ConsoleUsers extends ibas.ModuleConsole {
     /** 运行 */
     run(): void {
         // 加载语言-框架默认
+        ibas.i18n.load(this.rootUrl + "resources/languages/feedback.json");
         ibas.i18n.load(this.rootUrl + "resources/languages/bo/suggestion.json");
         ibas.i18n.load(this.rootUrl + "resources/languages/enums.json");
         // 设置资源属性

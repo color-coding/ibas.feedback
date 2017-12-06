@@ -8,7 +8,7 @@
 
 import * as ibas from "ibas/index";
 import * as bo from "./bo/index";
-import { IBORepositoryFeedback, BO_REPOSITORY_FEEDBACK } from "../api/index";
+import { IBORepositoryFeedback, BO_REPOSITORY_FEEDBACK, BO_REPOSITORY_FEEDBACKUSERS } from "../api/index";
 import { DataConverter4fb } from "./DataConverters";
 
 /** 业务对象仓库 */
@@ -61,3 +61,10 @@ export class BORepositoryFeedback extends ibas.BORepositoryApplication implement
 }
 // 注册业务对象仓库到工厂
 ibas.boFactory.register(BO_REPOSITORY_FEEDBACK, BORepositoryFeedback);
+
+/** 业务对象仓库 */
+export class BORepositoryFeedbackUsers extends BORepositoryFeedback {
+
+}
+// 注册业务对象仓库到工厂
+ibas.boFactory.register(BO_REPOSITORY_FEEDBACKUSERS, BORepositoryFeedbackUsers);
