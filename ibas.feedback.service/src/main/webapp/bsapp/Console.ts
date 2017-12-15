@@ -122,7 +122,7 @@ export class ConsoleUsers extends ibas.ModuleConsole {
         // 保留基类方法
         super.run();
     }
-    /** 设置报表仓库地址 */
+    /** 设置业务仓库地址 */
     setRepository(address: string): boolean {
         address = ibas.urls.normalize(address);
         let repositoryName: string = ibas.strings.format(ibas.MODULE_REPOSITORY_NAME_TEMPLATE, CONSOLE_NAME);
