@@ -75,7 +75,9 @@ export class SuggestionEditApp extends ibas.BOEditApplication<ISuggestionEditVie
         }
     }
     /** 运行,覆盖原方法 */
-    run(...args: any[]): void {
+    run(): void;
+    run(data: bo.Suggestion): void;
+    run(): void {
         let that: this = this;
         if (ibas.objects.instanceOf(arguments[0], bo.Suggestion)) {
             // 尝试重新查询编辑对象
@@ -110,7 +112,7 @@ export class SuggestionEditApp extends ibas.BOEditApplication<ISuggestionEditVie
                 return;
             }
         }
-        super.run.apply(this, args);
+        super.run.apply(this, arguments);
     }
     /** 待编辑的数据 */
     protected editData: bo.Suggestion;
