@@ -96,6 +96,7 @@ export class ConsoleUsers extends ibas.ModuleConsole {
     /** 运行 */
     run(): void {
         // 加载语言-框架默认
+        ibas.i18n.load(this.rootUrl + "resources/languages/feedback.json");
         ibas.i18n.load(this.rootUrl + "resources/languages/bo/suggestion.json");
         ibas.i18n.load(this.rootUrl + "resources/languages/enums.json");
         // 设置资源属性
@@ -120,5 +121,14 @@ export class ConsoleUsers extends ibas.ModuleConsole {
         });
         // 保留基类方法
         super.run();
+    }
+    /** 设置业务仓库地址 */
+    setRepository(address: string): boolean {
+        address = ibas.urls.normalize(address);
+        let repositoryName: string = ibas.strings.format(ibas.MODULE_REPOSITORY_NAME_TEMPLATE, CONSOLE_NAME);
+        let configName: string = ibas.strings.format(ibas.CONFIG_ITEM_TEMPLATE_REMOTE_REPOSITORY_ADDRESS, repositoryName);
+        ibas.config.set(configName, address);
+        ibas.logger.log(ibas.emMessageLevel.DEBUG, "repository: register [{0}]'s default address [{1}].", repositoryName, address);
+        return super.setRepository(address);
     }
 }
