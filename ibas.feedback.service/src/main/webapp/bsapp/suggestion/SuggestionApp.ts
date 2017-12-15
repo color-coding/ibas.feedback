@@ -8,7 +8,7 @@
 
 import * as ibas from "ibas/index";
 import * as bo from "../../borep/bo/index";
-import { BORepositoryFeedback } from "../../borep/BORepositories";
+import { BORepositoryFeedbackUsers } from "../../borep/BORepositories";
 
 /** 应用-建议 */
 export class SuggestionApp extends ibas.ResidentApplication<ISuggestionView> {
@@ -45,7 +45,7 @@ export class SuggestionApp extends ibas.ResidentApplication<ISuggestionView> {
     private submitEvent(data: FormData, content: string): void {
         this.busy(true);
         let that: this = this;
-        let boRepository: BORepositoryFeedback = new BORepositoryFeedback();
+        let boRepository: BORepositoryFeedbackUsers = new BORepositoryFeedbackUsers();
         boRepository.uploadScreenshot({
             fileData: data,
             onCompleted(opRslt: ibas.IOperationResult<ibas.FileData>): void {
@@ -72,7 +72,7 @@ export class SuggestionApp extends ibas.ResidentApplication<ISuggestionView> {
     /** 保存数据 */
     protected saveData(): void {
         let that: this = this;
-        let boRepository: BORepositoryFeedback = new BORepositoryFeedback();
+        let boRepository: BORepositoryFeedbackUsers = new BORepositoryFeedbackUsers();
         boRepository.saveSuggestion({
             beSaved: this.editData,
             onCompleted(opRslt: ibas.IOperationResult<bo.Suggestion>): void {
