@@ -12,6 +12,7 @@
     "feedback_msg_upload_screenshot": "上传截图",
     "feedback_msg_error": "失败",
     "feedback_msg_sucessful": "成功",
+    "feedback_msg_submit_suggestion": "提交反馈及截图",
     "feedback_suggestion_information": "反馈信息",
     "feedback_application_information": "应用信息",
     "feedback_placeholder_suggestion_tags": "使用空格可以分割出多个标签",
