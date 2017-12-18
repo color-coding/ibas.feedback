@@ -29,6 +29,8 @@ export interface IBORepositoryFeedback extends IBORepositoryApplication {
      * @param saver 保存者
      */
     saveSuggestion(saver: SaveCaller<bo.ISuggestion>);
+    /** 获取文件地址 */
+    toUrl(file: string): string;
     /**
      * 上传屏幕截图
      * @param caller 调用者

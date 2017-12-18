@@ -34,6 +34,13 @@ export class BORepositoryFeedback extends ibas.BORepositoryApplication implement
         super.save(bo.Suggestion.name, saver);
     }
 
+    /** 获取文件地址 */
+    toUrl(file: string): string {
+        if (!this.address.endsWith("/")) { this.address += "/"; }
+        let url: string = this.address.replace("/services/rest/data/", "/services/rest/file/");
+        url += ibas.strings.format("{0}?token={1}", file, this.token);
+        return encodeURI(url);
+    }
     /**
      * 上传屏幕截图
      * @param caller 调用者

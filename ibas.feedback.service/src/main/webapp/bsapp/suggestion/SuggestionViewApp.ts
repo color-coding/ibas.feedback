@@ -42,34 +42,9 @@ export class SuggestionViewApp extends ibas.BOViewService<ISuggestionViewView> {
         }
         this.view.showSuggestion(this.viewData);
         if (!ibas.objects.isNull(this.viewData.screenshot)) {
-            let that: this = this;
-            let criteria: ibas.ICriteria = new ibas.Criteria();
-            let condition: ibas.ICondition = criteria.conditions.create();
-            condition.alias = ibas.CRITERIA_CONDITION_ALIAS_FILE_NAME;
-            condition.value = this.viewData.screenshot;
             let boRepository: BORepositoryFeedback = new BORepositoryFeedback();
-            boRepository.downloadScreenshot({
-                criteria: criteria,
-                onCompleted(opRslt: ibas.IOperationResult<Blob>): void {
-                    try {
-                        if (opRslt.resultCode !== 0) {
-                            throw new Error(opRslt.message);
-                        }
-                        let blob: Blob = opRslt.resultObjects.firstOrDefault();
-                        if (!ibas.objects.isNull(blob)) {
-                            let fileReader: FileReader = new FileReader();
-                            fileReader.onload = function (e: ProgressEvent): void {
-                                let dataUrl: string = (<any>e.target).result;
-                                that.view.showScreenshot(dataUrl);
-                            };
-                            fileReader.readAsDataURL(blob);
-                        }
-
-                    } catch (error) {
-                        that.messages(error);
-                    }
-                }
-            });
+            let url: string = boRepository.toUrl(this.viewData.screenshot);
+            this.view.showScreenshot(url);
         }
     }
     /** 编辑数据，参数：目标数据 */
