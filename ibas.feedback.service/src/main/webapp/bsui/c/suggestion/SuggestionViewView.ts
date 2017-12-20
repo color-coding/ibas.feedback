@@ -20,10 +20,9 @@ export class SuggestionViewView extends ibas.BOViewView implements ISuggestionVi
     darw(): any {
         let that: this = this;
         this.image = new sap.m.Image("", {
-
         });
         this.form = new sap.ui.layout.form.SimpleForm("", {
-            editable: false,
+            editable: true,
             content: [
                 new sap.ui.core.Title("", { text: ibas.i18n.prop("feedback_suggestion_information") }),
                 new sap.m.Label("", { text: ibas.i18n.prop("bo_suggestion_suggester") }),
