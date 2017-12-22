@@ -22,6 +22,7 @@ export class SuggestionView extends ibas.BOResidentView implements ISuggestionVi
         // 不重复创建工具条钮
         if (ibas.objects.isNull(this.bar)) {
             this.bar = new sap.m.Button("", {
+                tooltip: this.title,
                 icon: "sap-icon://theater",
                 type: sap.m.ButtonType.Transparent,
                 press: function (): void {
