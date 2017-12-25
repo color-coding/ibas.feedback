@@ -121,7 +121,7 @@ export class SuggestionView extends ibas.BOResidentView implements ISuggestionVi
             , fps: 20 // frames per second when using setTimeout() as a fallback for CSS
             , zIndex: 2e9 // the z-index (defaults to 2000000000)
             , className: "spinner" // the CSS class to assign to the spinner
-            , top: "calc(50% - 40px)" // top position relative to parent
+            , top: "calc(50% - 2.5rem)" // top position relative to parent
             , left: "50%" // left position relative to parent
             , shadow: false // whether to render a shadow
             , hwaccel: false // whether to use hardware acceleration
