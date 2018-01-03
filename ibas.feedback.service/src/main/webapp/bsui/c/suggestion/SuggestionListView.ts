@@ -104,7 +104,7 @@ export class SuggestionListView extends ibas.BOListView implements ISuggestionLi
                         press: function (): void {
                             that.fireViewEvents(that.viewDataEvent,
                                 // 获取表格选中的对象
-                                openui5.utils.getTableSelecteds<bo.Suggestion>(that.table).firstOrDefault()
+                                openui5.utils.getSelecteds<bo.Suggestion>(that.table).firstOrDefault()
                             );
                         }
                     }),
@@ -115,7 +115,7 @@ export class SuggestionListView extends ibas.BOListView implements ISuggestionLi
                         press: function (): void {
                             that.fireViewEvents(that.editDataEvent,
                                 // 获取表格选中的对象
-                                openui5.utils.getTableSelecteds<bo.Suggestion>(that.table).firstOrDefault()
+                                openui5.utils.getSelecteds<bo.Suggestion>(that.table).firstOrDefault()
                             );
                         }
                     }),
@@ -127,7 +127,7 @@ export class SuggestionListView extends ibas.BOListView implements ISuggestionLi
                         press: function (): void {
                             that.fireViewEvents(that.deleteDataEvent,
                                 // 获取表格选中的对象
-                                openui5.utils.getTableSelecteds<bo.Suggestion>(that.table)
+                                openui5.utils.getSelecteds<bo.Suggestion>(that.table)
                             );
                         }
                     }),
@@ -226,6 +226,6 @@ export class SuggestionListView extends ibas.BOListView implements ISuggestionLi
     }
     /** 获取选择的数据 */
     getSelecteds(): bo.Suggestion[] {
-        return openui5.utils.getTableSelecteds<bo.Suggestion>(this.table);
+        return openui5.utils.getSelecteds<bo.Suggestion>(this.table);
     }
 }

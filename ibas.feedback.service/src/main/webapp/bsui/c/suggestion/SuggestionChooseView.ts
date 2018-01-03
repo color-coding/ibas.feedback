@@ -38,7 +38,7 @@ export class SuggestionChooseView extends ibas.BOChooseView implements ISuggesti
                 press: function (): void {
                     that.fireViewEvents(that.chooseDataEvent,
                         // 获取表格选中的对象
-                        openui5.utils.getTableSelecteds<bo.Suggestion>(that.table)
+                        openui5.utils.getSelecteds<bo.Suggestion>(that.table)
                     );
                 }
             }),
