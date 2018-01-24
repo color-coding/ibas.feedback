@@ -8,7 +8,7 @@
 
 import * as ibas from "ibas/index";
 import { CONSOLE_ID, CONSOLE_NAME, CONSOLE_VERSION } from "../api/index";
-import { SuggestionFunc, SuggestionChooseServiceMapping, SuggestionLinkServiceMapping, SuggestionApp } from "./suggestion/index";
+import { SuggestionFunc, SuggestionChooseServiceMapping, SuggestionApp } from "./suggestion/index";
 
 /** 模块控制台 */
 export class Console extends ibas.ModuleConsole {
@@ -31,7 +31,6 @@ export class Console extends ibas.ModuleConsole {
         this.register(new SuggestionFunc());
         // 注册服务应用
         this.register(new SuggestionChooseServiceMapping());
-        this.register(new SuggestionLinkServiceMapping());
         // 注册常驻应用
     }
     /** 运行 */

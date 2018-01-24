@@ -10,6 +10,5 @@
 export * from "./SuggestionFunc";
 export * from "./SuggestionListApp";
 export * from "./SuggestionChooseApp";
-export * from "./SuggestionViewApp";
 export * from "./SuggestionEditApp";
 export * from "./SuggestionApp";

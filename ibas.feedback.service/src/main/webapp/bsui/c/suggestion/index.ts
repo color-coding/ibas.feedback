@@ -9,6 +9,5 @@
 // 模块索引文件，此文件集中导出类
 export * from "./SuggestionListView";
 export * from "./SuggestionChooseView";
-export * from "./SuggestionViewView";
 export * from "./SuggestionEditView";
 export * from "./SuggestionView";

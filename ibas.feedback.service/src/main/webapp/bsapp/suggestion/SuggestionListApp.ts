@@ -10,7 +10,6 @@ import * as ibas from "ibas/index";
 import * as bo from "../../borep/bo/index";
 import { BORepositoryFeedback } from "../../borep/BORepositories";
 import { DataConverter4fb } from "../../borep/DataConverters";
-import { SuggestionViewApp } from "./SuggestionViewApp";
 import { SuggestionEditApp } from "./SuggestionEditApp";
 
 /** 列表应用-建议 */
@@ -81,11 +80,6 @@ export class SuggestionListApp extends ibas.BOListApplication<ISuggestionListVie
             ));
             return;
         }
-        let app: SuggestionViewApp = new SuggestionViewApp();
-        app.navigation = this.navigation;
-        app.viewShower = this.viewShower;
-        app.run(data);
-
     }
     /** 编辑数据，参数：目标数据 */
     protected editData(data: bo.Suggestion): void {

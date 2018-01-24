@@ -28,9 +28,6 @@ export default class Navigation extends ibas.ViewNavigation {
             case suggestionApps.SuggestionChooseApp.APPLICATION_ID:
                 view = new suggestionViews.SuggestionChooseView();
                 break;
-            case suggestionApps.SuggestionViewApp.APPLICATION_ID:
-                view = new suggestionViews.SuggestionViewView();
-                break;
             case suggestionApps.SuggestionEditApp.APPLICATION_ID:
                 view = new suggestionViews.SuggestionEditView();
                 break;
