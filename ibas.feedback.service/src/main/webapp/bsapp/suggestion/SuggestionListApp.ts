@@ -9,7 +9,7 @@
 import * as ibas from "ibas/index";
 import * as bo from "../../borep/bo/index";
 import { BORepositoryFeedback } from "../../borep/BORepositories";
-import { DataConverter4fb } from "../../borep/DataConverters";
+import { DataConverter4FB } from "../../borep/DataConverters";
 import { SuggestionEditApp } from "./SuggestionEditApp";
 
 /** 列表应用-建议 */
@@ -173,7 +173,7 @@ export class SuggestionListApp extends ibas.BOListApplication<ISuggestionListVie
         return [
             new ibas.BOListServiceProxy({
                 data: this.view.getSelecteds(),
-                converter: new DataConverter4fb()
+                converter: new DataConverter4FB()
             })
         ];
     }

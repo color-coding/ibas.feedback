@@ -17,7 +17,7 @@ export class SuggestionView extends ibas.BOResidentView implements ISuggestionVi
     /** 提交 */
     submitEvent: Function;
     /** 绘制工具条视图 */
-    darwBar(): any {
+    drawBar(): any {
         let that: this = this;
         // 不重复创建工具条钮
         if (ibas.objects.isNull(this.bar)) {
@@ -39,7 +39,7 @@ export class SuggestionView extends ibas.BOResidentView implements ISuggestionVi
     /** 激活完整视图事件 */
     showFullViewEvent: Function;
     /** 绘制视图 */
-    darw(): any {
+    draw(): any {
         let that: this = this;
         this.document = <any>window.document.cloneNode(true);
         this.layout = new sap.ui.layout.VerticalLayout("", {
