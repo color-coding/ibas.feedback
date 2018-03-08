@@ -2,8 +2,8 @@
 <!DOCTYPE ApplicationModule>
 <ns:ApplicationModule xmlns:ns="http://colorcoding.org/ibas/initialfantasy/bo">
     <Activated>YES</Activated>
-	<ModuleEntry>index.users</ModuleEntry>
+	<ModuleEntry>ConsoleUsers</ModuleEntry>
     <ModuleId>420471fe-047f-4c73-ae26-fe9da158b615</ModuleId>
-    <ModuleName>FeedbackUsers</ModuleName>
+    <ModuleName>Feedback</ModuleName>
     <PlatformId>COMBINATION</PlatformId>
 </ns:ApplicationModule>
