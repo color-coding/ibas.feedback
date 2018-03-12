@@ -125,9 +125,13 @@ namespace feedback {
                         , hwaccel: false // whether to use hardware acceleration
                         , position: "absolute" // element positioning
                     }).spin(target);
+                    // 使用此模块库加载器
+                    let require: Require = ibas.requires.create({
+                        context: ibas.requires.naming(CONSOLE_NAME),
+                    });
                     require(
                         [
-                            "../../../3rdparty/rasterizeHTML.allinone",
+                            "3rdparty/rasterizeHTML.allinone",
                         ],
                         function (rasterizeHTML: any): void {
                             // 移除document中的script,否则会引发沙盒环境下script不允许执行的问题
@@ -158,8 +162,8 @@ namespace feedback {
                                     // 仅桌面端可编辑截图
                                     require(
                                         [
-                                            "../../../3rdparty/canvastools.min",
-                                            "css!../../../3rdparty/canvastools.min"
+                                            "3rdparty/canvastools.min",
+                                            "css!3rdparty/canvastools.min"
                                         ], function (CanvasTools: any): void {
                                             let canvasTools: any = new CanvasTools(canvas, { container: tools });
                                         });
