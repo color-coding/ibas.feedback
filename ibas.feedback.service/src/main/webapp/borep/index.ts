@@ -14,8 +14,8 @@
 namespace feedback {
     export namespace bo {
         // 注册业务对象仓库到工厂
-        ibas.boFactory.register(BO_REPOSITORY_FEEDBACK, BORepositoryFeedback);
+        boFactory.register(BO_REPOSITORY_FEEDBACK, BORepositoryFeedback);
         // 注册业务对象到工厂
-        ibas.boFactory.register(Suggestion.BUSINESS_OBJECT_CODE, Suggestion);
+        boFactory.register(Suggestion.BUSINESS_OBJECT_CODE, Suggestion);
     }
 }
