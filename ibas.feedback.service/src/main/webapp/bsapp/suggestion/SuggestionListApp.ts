@@ -163,15 +163,6 @@ namespace feedback {
                     }
                 });
             }
-            /** 获取服务的契约 */
-            protected getServiceProxies(): ibas.IServiceProxy<ibas.IServiceContract>[] {
-                return [
-                    new ibas.BOListServiceProxy({
-                        data: this.view.getSelecteds(),
-                        converter: new bo.DataConverter()
-                    })
-                ];
-            }
         }
         /** 视图-建议 */
         export interface ISuggestionListView extends ibas.IBOListView {
@@ -181,8 +172,6 @@ namespace feedback {
             deleteDataEvent: Function;
             /** 显示数据 */
             showData(datas: bo.Suggestion[]): void;
-            /** 获取选择的数据 */
-            getSelecteds(): bo.Suggestion[];
         }
     }
 }
