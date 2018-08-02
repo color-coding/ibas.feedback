@@ -21,7 +21,7 @@ namespace feedback {
                 draw(): any {
                     let that: this = this;
                     this.image = new sap.m.Image("", {
-
+                        densityAware: false
                     });
                     this.form = new sap.ui.layout.form.SimpleForm("", {
                         editable: true,
