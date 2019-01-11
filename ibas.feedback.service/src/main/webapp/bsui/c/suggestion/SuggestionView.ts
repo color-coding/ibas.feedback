@@ -11,26 +11,21 @@ namespace feedback {
             /**
              * 视图-建议
              */
-            export class SuggestionView extends ibas.BOResidentView implements app.ISuggestionView {
+            export class SuggestionView extends ibas.ResidentView implements app.ISuggestionView {
                 /** 提交 */
                 submitEvent: Function;
                 /** 绘制工具条视图 */
                 drawBar(): any {
                     let that: this = this;
-                    // 不重复创建工具条钮
-                    if (ibas.objects.isNull(this.bar)) {
-                        this.bar = new sap.m.Button("", {
-                            tooltip: this.title,
-                            icon: "sap-icon://theater",
-                            type: sap.m.ButtonType.Transparent,
-                            press: function (): void {
-                                that.fireViewEvents(that.showFullViewEvent);
-                            }
-                        });
-                    }
-                    return this.bar;
+                    return new sap.m.Button("", {
+                        tooltip: this.title,
+                        icon: "sap-icon://theater",
+                        type: sap.m.ButtonType.Transparent,
+                        press: function (): void {
+                            that.fireViewEvents(that.showFullViewEvent);
+                        }
+                    });
                 }
-                private bar: sap.m.Button;
                 private document: Document;
                 private layout: sap.ui.layout.VerticalLayout;
                 private form: sap.m.ResponsivePopover;
