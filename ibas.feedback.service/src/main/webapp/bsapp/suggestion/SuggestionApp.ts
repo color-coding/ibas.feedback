@@ -7,15 +7,12 @@
  */
 namespace feedback {
     export namespace app {
-
         /** 应用-建议 */
         export class SuggestionApp extends ibas.ResidentApplication<ISuggestionView> {
-
             /** 应用标识 */
-            static APPLICATION_ID: string = "7b8d3e3d-8396-470d-9730-44da36d54640";
+            static APPLICATION_ID: string = "f6409012-9894-4238-906b-1b5f2c007cb2";
             /** 应用名称 */
             static APPLICATION_NAME: string = "feedback_app_suggestion_tucao";
-
             constructor() {
                 super();
                 this.id = SuggestionApp.APPLICATION_ID;
