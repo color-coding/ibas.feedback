@@ -12,6 +12,8 @@ namespace feedback {
              * 视图-建议
              */
             export class SuggestionView extends ibas.ResidentView implements app.ISuggestionView {
+                /** 激活完整视图事件 */
+                showFullViewEvent: Function;
                 /** 提交 */
                 submitEvent: Function;
                 /** 绘制工具条视图 */
@@ -29,8 +31,6 @@ namespace feedback {
                 private document: Document;
                 private layout: sap.ui.layout.VerticalLayout;
                 private form: sap.m.ResponsivePopover;
-                /** 激活完整视图事件 */
-                showFullViewEvent: Function;
                 /** 绘制视图 */
                 draw(): any {
                     let that: this = this;

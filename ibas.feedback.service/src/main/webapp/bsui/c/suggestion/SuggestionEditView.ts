@@ -20,22 +20,27 @@ namespace feedback {
                 /** 绘制视图 */
                 draw(): any {
                     let that: this = this;
-                    this.image = new sap.m.Image("", {
-                        densityAware: false
-                    });
-                    this.form = new sap.ui.layout.form.SimpleForm("", {
+                    let formTop: sap.ui.layout.form.SimpleForm = new sap.ui.layout.form.SimpleForm("", {
                         editable: true,
                         content: [
                             new sap.ui.core.Title("", { text: ibas.i18n.prop("feedback_suggestion_information") }),
                             new sap.m.Label("", { text: ibas.i18n.prop("bo_suggestion_suggester") }),
-                            new sap.m.Input("", {
-                            }).bindProperty("value", {
-                                path: "/suggester"
+                            new sap.extension.m.Input("", {
+                                editable: false,
+                            }).bindProperty("bindingValue", {
+                                path: "suggester",
+                                type: new sap.extension.data.Alphanumeric({
+                                    maxLength: 100
+                                })
                             }),
                             new sap.m.Label("", { text: ibas.i18n.prop("bo_suggestion_subject") }),
-                            new sap.m.Input("", {
-                            }).bindProperty("value", {
-                                path: "/subject"
+                            new sap.extension.m.Input("", {
+                                editable: false,
+                            }).bindProperty("bindingValue", {
+                                path: "subject",
+                                type: new sap.extension.data.Alphanumeric({
+                                    maxLength: 60
+                                })
                             }),
                             new sap.m.Label("", { text: ibas.i18n.prop("bo_suggestion_tags") }),
                             new sap.m.MultiInput("", {
@@ -79,48 +84,63 @@ namespace feedback {
                                     this.setTokens(tokens);
                                 },
                             }).bindProperty("value", {
-                                path: "/tags"
+                                path: "tags"
                             }),
                             new sap.m.Label("", { text: ibas.i18n.prop("bo_suggestion_content") }),
-                            new sap.m.TextArea("", {
+                            new sap.extension.m.TextArea("", {
                                 rows: 3
-                            }).bindProperty("value", {
-                                path: "/content"
+                            }).bindProperty("bindingValue", {
+                                path: "content",
+                                type: new sap.extension.data.Alphanumeric({
+                                    maxLength: 300
+                                })
                             }),
                             new sap.ui.core.Title("", { text: ibas.i18n.prop("feedback_application_information") }),
-                            new sap.m.Label("", { text: ibas.i18n.prop("bo_suggestion_objectkey") }),
-                            new sap.m.Input("", {
-                            }).bindProperty("value", {
-                                path: "/objectKey"
-                            }),
                             new sap.m.Label("", { text: ibas.i18n.prop("bo_suggestion_systemid") }),
-                            new sap.m.Input("", {
-                            }).bindProperty("selectedKey", {
-                                path: "/systemId"
+                            new sap.extension.m.Input("", {
+                                editable: false,
+                            }).bindProperty("bindingValue", {
+                                path: "systemId",
+                                type: new sap.extension.data.Alphanumeric({
+                                    maxLength: 36
+                                })
                             }),
                             new sap.m.Label("", { text: ibas.i18n.prop("bo_suggestion_moduleid") }),
-                            new sap.m.Input("", {
-                            }).bindProperty("value", {
-                                path: "/moduleId"
+                            new sap.extension.m.Input("", {
+                                editable: false,
+                            }).bindProperty("bindingValue", {
+                                path: "moduleId",
+                                type: new sap.extension.data.Alphanumeric({
+                                    maxLength: 36
+                                })
                             }),
                             new sap.m.Label("", { text: ibas.i18n.prop("bo_suggestion_applicationid") }),
-                            new sap.m.Input("", {
-                            }).bindProperty("value", {
-                                path: "/applicationId"
+                            new sap.extension.m.Input("", {
+                                editable: false,
+                            }).bindProperty("bindingValue", {
+                                path: "applicationId",
+                                type: new sap.extension.data.Alphanumeric({
+                                    maxLength: 36
+                                })
                             }),
                             new sap.m.Label("", { text: ibas.i18n.prop("bo_suggestion_closed") }),
-                            new sap.m.Select("", {
-                                items: openui5.utils.createComboBoxItems(ibas.emYesNo)
-                            }).bindProperty("selectedKey", {
-                                path: "/closed",
-                                type: "sap.ui.model.type.Integer"
+                            new sap.extension.m.EnumSelect("", {
+                                enumType: ibas.emYesNo
+                            }).bindProperty("bindingValue", {
+                                path: "closed",
+                                type: new sap.extension.data.YesNo()
                             }),
                             new sap.ui.core.Title("", { text: ibas.i18n.prop("bo_suggestion_screenshot") }),
-                            this.image
+                            this.image = new sap.m.Image("", {
+                                densityAware: false
+                            })
                         ]
                     });
-                    this.page = new sap.m.Page("", {
+                    return this.page = new sap.extension.m.DataPage("", {
                         showHeader: false,
+                        dataInfo: {
+                            code: bo.Suggestion.BUSINESS_OBJECT_CODE,
+                        },
                         subHeader: new sap.m.Toolbar("", {
                             content: [
                                 new sap.m.Button("", {
@@ -168,36 +188,18 @@ namespace feedback {
                                 }),
                             ]
                         }),
-                        content: [this.form]
+                        content: [
+                            formTop,
+                        ]
                     });
-                    this.id = this.page.getId();
-                    return this.page;
                 }
-                private page: sap.m.Page;
-                private form: sap.ui.layout.form.SimpleForm;
+                private page: sap.extension.m.Page;
                 private image: sap.m.Image;
-                /** 改变视图状态 */
-                private changeViewStatus(data: bo.Suggestion): void {
-                    if (ibas.objects.isNull(data)) {
-                        return;
-                    }
-                    // 新建时：禁用删除，
-                    if (data.isNew) {
-                        if (this.page.getSubHeader() instanceof sap.m.Toolbar) {
-                            openui5.utils.changeToolbarSavable(<sap.m.Toolbar>this.page.getSubHeader(), true);
-                            openui5.utils.changeToolbarDeletable(<sap.m.Toolbar>this.page.getSubHeader(), false);
-                        }
-                    }
-                    // 不可编辑：已批准，
-                }
-
                 /** 显示数据 */
                 showSuggestion(data: bo.Suggestion): void {
-                    this.form.setModel(new sap.ui.model.json.JSONModel(data));
-                    // 监听属性改变，并更新控件
-                    openui5.utils.refreshModelChanged(this.form, data);
-                    // 改变视图状态
-                    this.changeViewStatus(data);
+                    this.page.setModel(new sap.extension.model.JSONModel(data));
+                    // 改变页面状态
+                    sap.extension.pages.changeStatus(this.page);
                 }
                 /** 展示屏幕截图 */
                 showScreenshot(dataUrl: string): void {
