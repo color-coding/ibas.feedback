@@ -105,9 +105,12 @@ namespace feedback {
                             }
                             ibas.logger.log(ibas.emMessageLevel.DEBUG, "result: {0}", criteria.toString());
                             that.fireViewEvents(that.fetchDataEvent, criteria);
+                        },
+                        rowDoubleClick(event: sap.ui.base.Event): void {
+                            that.fireViewEvents(that.chooseDataEvent, event.getParameter("row")?.getBindingContext()?.getObject());
                         }
                     });
-                    return new sap.extension.m.Dialog("", {
+                    return new sap.m.Dialog("", {
                         title: this.title,
                         type: sap.m.DialogType.Standard,
                         state: sap.ui.core.ValueState.None,
@@ -140,7 +143,7 @@ namespace feedback {
                                 }
                             }),
                         ]
-                    });
+                    }).addStyleClass("sapUiNoContentPadding");
                 }
                 private table: sap.extension.table.Table;
                 /** 显示数据 */
