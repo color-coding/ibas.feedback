@@ -97,5 +97,17 @@ namespace feedback {
             /** 显示屏幕截图 */
             showScreenShot(): void;
         }
+        export class SuggestionApplicationMapping extends ibas.ResidentApplicationMapping {
+            /** 构造函数 */
+            constructor() {
+                super();
+                this.id = SuggestionApp.APPLICATION_ID;
+                this.name = SuggestionApp.APPLICATION_NAME;
+                this.description = ibas.i18n.prop(this.name);
+            }
+            create(): ibas.ResidentApplication<ibas.IResidentView> {
+                return new SuggestionApp();
+            }
+        }
     }
 }

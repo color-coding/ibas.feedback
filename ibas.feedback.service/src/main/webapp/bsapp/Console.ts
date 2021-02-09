@@ -94,7 +94,7 @@ namespace feedback {
                 // 注册功能
                 // 注册服务应用
                 // 注册常驻应用
-                this.register(new SuggestionApp());
+                this.register(new SuggestionApplicationMapping());
 
             }
             /** 运行 */
