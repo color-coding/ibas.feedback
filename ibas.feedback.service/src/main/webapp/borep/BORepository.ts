@@ -35,7 +35,7 @@ namespace feedback {
             toUrl(file: string): string {
                 if (!this.address.endsWith("/")) { this.address += "/"; }
                 let url: string = this.address.replace("/services/rest/data/", "/services/rest/file/");
-                url += ibas.strings.format("{0}?token={1}", file, this.token);
+                url += ibas.strings.format("{0}?token={1}", file, ibas.tokens.content(this.token));
                 return encodeURI(url);
             }
             /**
