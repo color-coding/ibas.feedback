@@ -1,1 +1,27 @@
-[]
+[
+    {
+        "bo_suggestion": "Suggestion",
+        "bo_suggestion_systemid": "System ID",
+        "bo_suggestion_moduleid": "Module ID",
+        "bo_suggestion_applicationid": "Application ID",
+        "bo_suggestion_suggester": "Proposer",
+        "bo_suggestion_subject": "Subject",
+        "bo_suggestion_tags": "Tags",
+        "bo_suggestion_content": "Content",
+        "bo_suggestion_screenshot": "Screenshot",
+        "bo_suggestion_closed": "Closed",
+        "bo_suggestion_objectkey": "Object Number",
+        "bo_suggestion_objectcode": "Object Type",
+        "bo_suggestion_datasource": "Data Source",
+        "bo_suggestion_createdate": "Creation Date",
+        "bo_suggestion_createtime": "Creation Time",
+        "bo_suggestion_updatedate": "Modification Date",
+        "bo_suggestion_updatetime": "Modification Time",
+        "bo_suggestion_createactionid": "Creation Action ID",
+        "bo_suggestion_updateactionid": "Update Action ID",
+        "bo_suggestion_loginst": "Instance Number (Version)",
+        "bo_suggestion_createusersign": "Created User",
+        "bo_suggestion_updateusersign": "Modified User",
+        "bo_suggestion_closing_delimiter": "----End----"
+    }
+]

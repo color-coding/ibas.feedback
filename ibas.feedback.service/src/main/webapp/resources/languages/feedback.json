@@ -1,2 +1,20 @@
 {
+    "feedback": "Feedback",
+    "feedback_icon": "sap-icon://stethoscope",
+    "feedback_func_suggestion": "Suggestion",
+    "feedback_app_suggestion_list": "Suggestion List",
+    "feedback_app_suggestion_choose": "Suggestion Choose",
+    "feedback_app_suggestion_view": "Suggestion View",
+    "feedback_app_suggestion_edit": "Suggestion Edit",
+    "feedback_app_suggestion_tucao": "Feedback",
+    "feedbackusers": "Feedback",
+    "feedbackusers_icon": "sap-icon://theater",
+    "feedback_msg_upload_screenshot": "Upload",
+    "feedback_msg_error": "Error",
+    "feedback_msg_sucessful": "Sucessful",
+    "feedback_msg_submit_suggestion": "Submit suggestion",
+    "feedback_suggestion_information": "Suggestion Information",
+    "feedback_application_information": "Application Information",
+    "feedback_placeholder_suggestion_tags": "Using spaces can separate multiple labels",
+    "feedback_closing_delimiter": "---- End ----"
 }
