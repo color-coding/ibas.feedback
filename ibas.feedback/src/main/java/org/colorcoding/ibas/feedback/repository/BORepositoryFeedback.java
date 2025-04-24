@@ -24,7 +24,7 @@ public class BORepositoryFeedback extends BORepositoryServiceApplication
 	 * @return 操作结果
 	 */
 	public OperationResult<Suggestion> fetchSuggestion(ICriteria criteria, String token) {
-		return super.fetch(criteria, token, Suggestion.class);
+		return super.fetch(Suggestion.class, criteria, token);
 	}
 
 	/**
