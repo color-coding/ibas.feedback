@@ -42,7 +42,7 @@ namespace feedback {
              * 上传屏幕截图
              * @param caller 调用者
              */
-            uploadScreenshot(caller: ibas.IUploadFileCaller<ibas.FileData>): void {
+            uploadScreenshot(caller: ibas.IUploadFileCaller<ibas.FileItem>): void {
                 if (!this.address.endsWith("/")) { this.address += "/"; }
                 let fileRepository: ibas.FileRepositoryUploadAjax = new ibas.FileRepositoryUploadAjax();
                 fileRepository.address = this.address.replace("/services/rest/data/", "/services/rest/file/");

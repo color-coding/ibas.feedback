@@ -59,7 +59,7 @@ public class Suggestion extends BusinessObject<Suggestion> implements ISuggestio
 	/**
 	 * 系统标识 属性
 	 */
-	@DbField(name = "SystemId", type = DbFieldType.ALPHANUMERIC, table = DB_TABLE_NAME, primaryKey = false)
+	@DbField(name = "SystemId", type = DbFieldType.ALPHANUMERIC, table = DB_TABLE_NAME)
 	public static final IPropertyInfo<String> PROPERTY_SYSTEMID = registerProperty(PROPERTY_SYSTEMID_NAME, String.class,
 			MY_CLASS);
 
@@ -91,7 +91,7 @@ public class Suggestion extends BusinessObject<Suggestion> implements ISuggestio
 	/**
 	 * 模块标识 属性
 	 */
-	@DbField(name = "ModuleId", type = DbFieldType.ALPHANUMERIC, table = DB_TABLE_NAME, primaryKey = false)
+	@DbField(name = "ModuleId", type = DbFieldType.ALPHANUMERIC, table = DB_TABLE_NAME)
 	public static final IPropertyInfo<String> PROPERTY_MODULEID = registerProperty(PROPERTY_MODULEID_NAME, String.class,
 			MY_CLASS);
 
@@ -123,7 +123,7 @@ public class Suggestion extends BusinessObject<Suggestion> implements ISuggestio
 	/**
 	 * 应用标识 属性
 	 */
-	@DbField(name = "AppId", type = DbFieldType.ALPHANUMERIC, table = DB_TABLE_NAME, primaryKey = false)
+	@DbField(name = "AppId", type = DbFieldType.ALPHANUMERIC, table = DB_TABLE_NAME)
 	public static final IPropertyInfo<String> PROPERTY_APPLICATIONID = registerProperty(PROPERTY_APPLICATIONID_NAME,
 			String.class, MY_CLASS);
 
@@ -155,7 +155,7 @@ public class Suggestion extends BusinessObject<Suggestion> implements ISuggestio
 	/**
 	 * 建议人 属性
 	 */
-	@DbField(name = "Suggester", type = DbFieldType.ALPHANUMERIC, table = DB_TABLE_NAME, primaryKey = false)
+	@DbField(name = "Suggester", type = DbFieldType.ALPHANUMERIC, table = DB_TABLE_NAME)
 	public static final IPropertyInfo<String> PROPERTY_SUGGESTER = registerProperty(PROPERTY_SUGGESTER_NAME,
 			String.class, MY_CLASS);
 
@@ -187,7 +187,7 @@ public class Suggestion extends BusinessObject<Suggestion> implements ISuggestio
 	/**
 	 * 主题 属性
 	 */
-	@DbField(name = "Subject", type = DbFieldType.ALPHANUMERIC, table = DB_TABLE_NAME, primaryKey = false)
+	@DbField(name = "Subject", type = DbFieldType.ALPHANUMERIC, table = DB_TABLE_NAME)
 	public static final IPropertyInfo<String> PROPERTY_SUBJECT = registerProperty(PROPERTY_SUBJECT_NAME, String.class,
 			MY_CLASS);
 
@@ -219,7 +219,7 @@ public class Suggestion extends BusinessObject<Suggestion> implements ISuggestio
 	/**
 	 * 标签 属性
 	 */
-	@DbField(name = "Tags", type = DbFieldType.ALPHANUMERIC, table = DB_TABLE_NAME, primaryKey = false)
+	@DbField(name = "Tags", type = DbFieldType.ALPHANUMERIC, table = DB_TABLE_NAME)
 	public static final IPropertyInfo<String> PROPERTY_TAGS = registerProperty(PROPERTY_TAGS_NAME, String.class,
 			MY_CLASS);
 
@@ -251,7 +251,7 @@ public class Suggestion extends BusinessObject<Suggestion> implements ISuggestio
 	/**
 	 * 内容 属性
 	 */
-	@DbField(name = "Content", type = DbFieldType.ALPHANUMERIC, table = DB_TABLE_NAME, primaryKey = false)
+	@DbField(name = "Content", type = DbFieldType.ALPHANUMERIC, table = DB_TABLE_NAME)
 	public static final IPropertyInfo<String> PROPERTY_CONTENT = registerProperty(PROPERTY_CONTENT_NAME, String.class,
 			MY_CLASS);
 
@@ -283,7 +283,7 @@ public class Suggestion extends BusinessObject<Suggestion> implements ISuggestio
 	/**
 	 * 截图 属性
 	 */
-	@DbField(name = "Screenshot", type = DbFieldType.ALPHANUMERIC, table = DB_TABLE_NAME, primaryKey = false)
+	@DbField(name = "Screenshot", type = DbFieldType.ALPHANUMERIC, table = DB_TABLE_NAME)
 	public static final IPropertyInfo<String> PROPERTY_SCREENSHOT = registerProperty(PROPERTY_SCREENSHOT_NAME,
 			String.class, MY_CLASS);
 
@@ -315,7 +315,7 @@ public class Suggestion extends BusinessObject<Suggestion> implements ISuggestio
 	/**
 	 * 是否关闭 属性
 	 */
-	@DbField(name = "Closed", type = DbFieldType.ALPHANUMERIC, table = DB_TABLE_NAME, primaryKey = false)
+	@DbField(name = "Closed", type = DbFieldType.ALPHANUMERIC, table = DB_TABLE_NAME)
 	public static final IPropertyInfo<emYesNo> PROPERTY_CLOSED = registerProperty(PROPERTY_CLOSED_NAME, emYesNo.class,
 			MY_CLASS);
 
@@ -379,7 +379,7 @@ public class Suggestion extends BusinessObject<Suggestion> implements ISuggestio
 	/**
 	 * 对象类型 属性
 	 */
-	@DbField(name = "ObjectCode", type = DbFieldType.ALPHANUMERIC, table = DB_TABLE_NAME, primaryKey = false)
+	@DbField(name = "ObjectCode", type = DbFieldType.ALPHANUMERIC, table = DB_TABLE_NAME)
 	public static final IPropertyInfo<String> PROPERTY_OBJECTCODE = registerProperty(PROPERTY_OBJECTCODE_NAME,
 			String.class, MY_CLASS);
 
@@ -411,7 +411,7 @@ public class Suggestion extends BusinessObject<Suggestion> implements ISuggestio
 	/**
 	 * 数据源 属性
 	 */
-	@DbField(name = "DataSource", type = DbFieldType.ALPHANUMERIC, table = DB_TABLE_NAME, primaryKey = false)
+	@DbField(name = "DataSource", type = DbFieldType.ALPHANUMERIC, table = DB_TABLE_NAME)
 	public static final IPropertyInfo<String> PROPERTY_DATASOURCE = registerProperty(PROPERTY_DATASOURCE_NAME,
 			String.class, MY_CLASS);
 
@@ -443,7 +443,7 @@ public class Suggestion extends BusinessObject<Suggestion> implements ISuggestio
 	/**
 	 * 创建日期 属性
 	 */
-	@DbField(name = "CreateDate", type = DbFieldType.DATE, table = DB_TABLE_NAME, primaryKey = false)
+	@DbField(name = "CreateDate", type = DbFieldType.DATE, table = DB_TABLE_NAME)
 	public static final IPropertyInfo<DateTime> PROPERTY_CREATEDATE = registerProperty(PROPERTY_CREATEDATE_NAME,
 			DateTime.class, MY_CLASS);
 
@@ -475,7 +475,7 @@ public class Suggestion extends BusinessObject<Suggestion> implements ISuggestio
 	/**
 	 * 创建时间 属性
 	 */
-	@DbField(name = "CreateTime", type = DbFieldType.NUMERIC, table = DB_TABLE_NAME, primaryKey = false)
+	@DbField(name = "CreateTime", type = DbFieldType.NUMERIC, table = DB_TABLE_NAME)
 	public static final IPropertyInfo<Short> PROPERTY_CREATETIME = registerProperty(PROPERTY_CREATETIME_NAME,
 			Short.class, MY_CLASS);
 
@@ -507,7 +507,7 @@ public class Suggestion extends BusinessObject<Suggestion> implements ISuggestio
 	/**
 	 * 修改日期 属性
 	 */
-	@DbField(name = "UpdateDate", type = DbFieldType.DATE, table = DB_TABLE_NAME, primaryKey = false)
+	@DbField(name = "UpdateDate", type = DbFieldType.DATE, table = DB_TABLE_NAME)
 	public static final IPropertyInfo<DateTime> PROPERTY_UPDATEDATE = registerProperty(PROPERTY_UPDATEDATE_NAME,
 			DateTime.class, MY_CLASS);
 
@@ -539,7 +539,7 @@ public class Suggestion extends BusinessObject<Suggestion> implements ISuggestio
 	/**
 	 * 修改时间 属性
 	 */
-	@DbField(name = "UpdateTime", type = DbFieldType.NUMERIC, table = DB_TABLE_NAME, primaryKey = false)
+	@DbField(name = "UpdateTime", type = DbFieldType.NUMERIC, table = DB_TABLE_NAME)
 	public static final IPropertyInfo<Short> PROPERTY_UPDATETIME = registerProperty(PROPERTY_UPDATETIME_NAME,
 			Short.class, MY_CLASS);
 
@@ -571,7 +571,7 @@ public class Suggestion extends BusinessObject<Suggestion> implements ISuggestio
 	/**
 	 * 创建动作标识 属性
 	 */
-	@DbField(name = "CreateActId", type = DbFieldType.ALPHANUMERIC, table = DB_TABLE_NAME, primaryKey = false)
+	@DbField(name = "CreateActId", type = DbFieldType.ALPHANUMERIC, table = DB_TABLE_NAME)
 	public static final IPropertyInfo<String> PROPERTY_CREATEACTIONID = registerProperty(PROPERTY_CREATEACTIONID_NAME,
 			String.class, MY_CLASS);
 
@@ -603,7 +603,7 @@ public class Suggestion extends BusinessObject<Suggestion> implements ISuggestio
 	/**
 	 * 更新动作标识 属性
 	 */
-	@DbField(name = "UpdateActId", type = DbFieldType.ALPHANUMERIC, table = DB_TABLE_NAME, primaryKey = false)
+	@DbField(name = "UpdateActId", type = DbFieldType.ALPHANUMERIC, table = DB_TABLE_NAME)
 	public static final IPropertyInfo<String> PROPERTY_UPDATEACTIONID = registerProperty(PROPERTY_UPDATEACTIONID_NAME,
 			String.class, MY_CLASS);
 
@@ -635,7 +635,7 @@ public class Suggestion extends BusinessObject<Suggestion> implements ISuggestio
 	/**
 	 * 实例号（版本） 属性
 	 */
-	@DbField(name = "LogInst", type = DbFieldType.NUMERIC, table = DB_TABLE_NAME, primaryKey = false)
+	@DbField(name = "LogInst", type = DbFieldType.NUMERIC, table = DB_TABLE_NAME)
 	public static final IPropertyInfo<Integer> PROPERTY_LOGINST = registerProperty(PROPERTY_LOGINST_NAME, Integer.class,
 			MY_CLASS);
 
@@ -667,7 +667,7 @@ public class Suggestion extends BusinessObject<Suggestion> implements ISuggestio
 	/**
 	 * 创建用户 属性
 	 */
-	@DbField(name = "Creator", type = DbFieldType.NUMERIC, table = DB_TABLE_NAME, primaryKey = false)
+	@DbField(name = "Creator", type = DbFieldType.NUMERIC, table = DB_TABLE_NAME)
 	public static final IPropertyInfo<Integer> PROPERTY_CREATEUSERSIGN = registerProperty(PROPERTY_CREATEUSERSIGN_NAME,
 			Integer.class, MY_CLASS);
 
@@ -699,7 +699,7 @@ public class Suggestion extends BusinessObject<Suggestion> implements ISuggestio
 	/**
 	 * 修改用户 属性
 	 */
-	@DbField(name = "Updator", type = DbFieldType.NUMERIC, table = DB_TABLE_NAME, primaryKey = false)
+	@DbField(name = "Updator", type = DbFieldType.NUMERIC, table = DB_TABLE_NAME)
 	public static final IPropertyInfo<Integer> PROPERTY_UPDATEUSERSIGN = registerProperty(PROPERTY_UPDATEUSERSIGN_NAME,
 			Integer.class, MY_CLASS);
 

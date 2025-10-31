@@ -43,7 +43,7 @@ namespace feedback {
                 let boRepository: bo.BORepositoryFeedback = new bo.BORepositoryFeedback();
                 boRepository.uploadScreenshot({
                     fileData: data,
-                    onCompleted(opRslt: ibas.IOperationResult<ibas.FileData>): void {
+                    onCompleted(opRslt: ibas.IOperationResult<ibas.FileItem>): void {
                         try {
                             if (opRslt.resultCode !== 0) {
                                 throw new Error(opRslt.message);
@@ -52,8 +52,8 @@ namespace feedback {
                                 throw new Error(ibas.i18n.prop("feedback_msg_upload_screenshot")
                                     + ibas.i18n.prop("feedback_msg_error"));
                             } else {
-                                let fileData: ibas.FileData = opRslt.resultObjects.firstOrDefault();
-                                that.editData.screenshot = fileData.fileName;
+                                let fileData: ibas.FileItem = opRslt.resultObjects.firstOrDefault();
+                                that.editData.screenshot = fileData.name;
                                 that.editData.content = content;
                                 that.saveData();
                             }
