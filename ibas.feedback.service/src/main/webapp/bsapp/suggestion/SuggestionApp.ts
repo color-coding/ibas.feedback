@@ -79,7 +79,7 @@ namespace feedback {
                             }
                             if (opRslt.resultObjects.length >= 0) {
                                 that.messages(ibas.emMessageType.SUCCESS,
-                                    ibas.i18n.prop("shell_data_save") + ibas.i18n.prop("shell_sucessful"));
+                                    ibas.i18n.prop("shell_data_save") + ibas.i18n.prop("shell_successful"));
                             }
                             that.close();
                         } catch (error) {
