@@ -9,7 +9,7 @@ namespace feedback {
     export namespace app {
 
         /** 编辑应用-建议 */
-        export class SuggestionEditApp extends ibas.BOEditApplication<ISuggestionEditView, bo.Suggestion> {
+        export class SuggestionEditApp extends ibas.BOEditService<ISuggestionEditView, bo.Suggestion> {
 
             /** 应用标识 */
             static APPLICATION_ID: string = "65680eba-c4d1-4ed0-a982-b1dd5a68f527";
@@ -187,6 +187,21 @@ namespace feedback {
             createDataEvent: Function;
             /** 展示屏幕截图 */
             showScreenshot(dataUrl: string): void;
+        }
+        /** Suggestion编辑服务映射 */
+        export class SuggestionEditServiceMapping extends ibas.BOEditServiceMapping {
+            /** 构造函数 */
+            constructor() {
+                super();
+                this.id = SuggestionEditApp.APPLICATION_ID;
+                this.name = SuggestionEditApp.APPLICATION_NAME;
+                this.boCode = SuggestionEditApp.BUSINESS_OBJECT_CODE;
+                this.description = ibas.i18n.prop(this.name);
+            }
+            /** 创建服务实例 */
+            create(): ibas.IService<ibas.IBOEditServiceCaller<bo.Suggestion>> {
+                return new SuggestionEditApp();
+            }
         }
     }
 }
