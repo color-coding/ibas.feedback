@@ -24,6 +24,7 @@ namespace feedback {
                 // 注册功能
                 this.register(new SuggestionFunc());
                 // 注册服务应用
+                this.register(new SuggestionEditServiceMapping());
                 this.register(new SuggestionChooseServiceMapping());
                 // 注册常驻应用
             }
